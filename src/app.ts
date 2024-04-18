@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors({ origin: "*" }));
 const PORT = process.env.PORT || 8080;
 
-app.post("/sign-up", async (req, res) => {
+app.post("/api/sign-up", async (req, res) => {
   try {
     const { first_name, last_name, password, confirm_password, email } =
       req.body;
@@ -105,7 +105,7 @@ app.post("/sign-up", async (req, res) => {
   }
 });
 
-app.post("/verify-otp", async (req, res) => {
+app.post("/api/verify-otp", async (req, res) => {
   try {
     const { user, otp } = req.body;
 
@@ -170,7 +170,7 @@ app.post("/verify-otp", async (req, res) => {
   }
 });
 
-app.post("/sign-in", async (req, res) => {
+app.post("/api/sign-in", async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
