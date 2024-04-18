@@ -17,7 +17,7 @@ import { VerificationTokenModel } from "../db/model/verificationEmail";
 const app: express.Application = express();
 app.use(express.json());
 app.use(cors({ origin: "*" }));
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 app.post("/sign-up", async (req, res) => {
   try {
