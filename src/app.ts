@@ -23,7 +23,7 @@ app.post("/sign-up", async (req, res) => {
   try {
     const { first_name, last_name, password, confirm_password, email } =
       req.body;
-    if (!first_name || !last_name || !password || !email) {
+    if (!first_name || !last_name || !password || !email || !confirm_password) {
       return res.status(400).send({
         message: "Fields Should not be empty",
       });
@@ -170,7 +170,7 @@ app.post("/verify-otp", async (req, res) => {
   }
 });
 
-app.post("/login", async (req, res) => {
+app.post("/sign-in", async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -184,7 +184,7 @@ app.post("/login", async (req, res) => {
         message: "User Not Exist",
       });
     }
-    const isPasswordMatch = verifyOtpOrPassword(
+    const isPasswordMatch = await verifyOtpOrPassword(
       checkUserExist?.password,
       password
     );
